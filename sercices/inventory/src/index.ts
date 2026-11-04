@@ -35,4 +35,3 @@ app.listen(PORT, () => {
     console.log(`${serviceName} is running on port ${PORT}`);
 });
 
-//"dev": "ts-node-dev -r tsconfig-paths/register  ./src/index.ts"
