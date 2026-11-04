@@ -34,3 +34,5 @@ const serviceName = process.env.SERVICE_NAME || 'inventory-service';
 app.listen(PORT, () => {
     console.log(`${serviceName} is running on port ${PORT}`);
 });
+
+//"dev": "ts-node-dev -r tsconfig-paths/register  ./src/index.ts"
