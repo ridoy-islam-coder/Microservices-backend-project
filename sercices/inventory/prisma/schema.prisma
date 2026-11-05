@@ -8,10 +8,13 @@ generator client {
   output   = "../generated/prisma"
 }
 
+// datasource db {
+//   provider = "postgresql"
+// }
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
-
 
 
 model Inventory {
