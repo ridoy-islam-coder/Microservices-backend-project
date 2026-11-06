@@ -1,0 +1,1 @@
+export const INVENTORY_URL = process.env.inventory_service_url || 'http://localhost:4002';
