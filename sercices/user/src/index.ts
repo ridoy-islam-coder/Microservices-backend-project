@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
+import { createUser, getUserById } from './controller';
 
 
 
@@ -37,7 +38,8 @@ app.get('/health', (req, res) => {
 
 
 
-
+app.get('/users/:id', getUserById);
+app.post('/users',createUser);
 
 
 
