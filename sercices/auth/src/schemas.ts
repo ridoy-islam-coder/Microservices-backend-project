@@ -12,3 +12,11 @@ export const userLoginSchema=z.object({
   password: z.string(),
   
 })
+
+
+export const AccessTokenSchema=z.object({
+  accessToken:z.string(),
+  
+  
+})
+

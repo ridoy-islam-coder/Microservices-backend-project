@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
+import { userLogin, userRegistration, verifyToken } from './controller';
 
 
 
@@ -37,7 +38,11 @@ app.get('/health', (req, res) => {
 // }); 
 
 
+//api routh
 
+app.post('/auth/registration',userRegistration)
+app.post('/auth/userlogin',userLogin)
+app.post('/auth/verify-token',verifyToken)
 
 
 

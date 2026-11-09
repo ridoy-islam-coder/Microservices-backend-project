@@ -38,7 +38,7 @@ const userLogin = async (
 
 // user  histore create
 
-    const ipAddress =req.headers['x-forwarded-for'] || req.ip || '';
+    const ipAddress =req.headers['x-forwarded-for'] as string || req.ip || '';
 
     const userAgent = req.headers['user-agent'] || '';
 
@@ -60,6 +60,18 @@ const userLogin = async (
     });
 
     if (!user) {
+
+   await createLoginHistory(
+   
+    {
+       userId:'Gust',
+      userAgent,
+      ipAddress,
+      attempt:'FAILED',
+    }
+
+   )
+
       return res.status(400).json({
         message: 'Invalid credentials'
       });
@@ -72,6 +84,21 @@ const userLogin = async (
     );
 
     if (!isMatch) {
+
+  
+   await createLoginHistory(
+   
+    {
+       userId:user.id,
+      userAgent,
+      ipAddress,
+      attempt:'FAILED',
+    }
+
+   )
+
+
+      
       return res.status(400).json({
         message: 'Invalid credentials'
       });
@@ -79,6 +106,19 @@ const userLogin = async (
 
     // Check if the user is verified
     if (!user.verified) {
+
+     await createLoginHistory(
+   
+    {
+       userId:user.id,
+      userAgent,
+      ipAddress,
+      attempt:'FAILED',
+    }
+
+   )
+
+
       return res.status(400).json({
         message: 'User not verified'
       });
@@ -86,6 +126,18 @@ const userLogin = async (
 
     // Check if the account is active
     if (user.status !== 'ACTIVE') {
+    
+      await createLoginHistory(
+   
+    {
+       userId:user.id,
+      userAgent,
+      ipAddress,
+      attempt:'FAILED',
+    }
+
+   )
+
       return res.status(400).json({
         message: `Your account is ${user.status.toLocaleLowerCase()}`
       });
@@ -104,6 +156,20 @@ const userLogin = async (
         expiresIn: '2h'
       }
     );
+
+
+       await createLoginHistory(
+   
+    {
+       userId:user.id,
+      userAgent,
+      ipAddress,
+      attempt:'SUCCESS',
+    }
+
+   )
+
+
 
     return res.status(200).json({
       accessToken,
