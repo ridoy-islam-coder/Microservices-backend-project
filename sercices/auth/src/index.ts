@@ -40,7 +40,7 @@ app.get('/health', (req, res) => {
 
 //api routh
 
-app.post('/auth/registration',userRegistration)
+app.post('/auth/register',userRegistration)
 app.post('/auth/userlogin',userLogin)
 app.post('/auth/verify-token',verifyToken)
 app.post('/auth/verify-email',verifyEmail)
@@ -61,7 +61,7 @@ app.use((err, req, res, next) => {
 });
 
 
-const PORT = process.env.PORT || 4004;
+const PORT = process.env.PORT || 4003;
 
 
 

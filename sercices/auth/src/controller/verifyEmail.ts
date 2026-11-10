@@ -1,3 +1,4 @@
+import { EMAIL_SERVICE } from '@/config';
 import prisma from '@/prisma';
 import { EmailVerificationSchema } from '@/schemas';
 import axios from 'axios';
@@ -43,10 +44,10 @@ const verifyEmail = async (req: Request, res: Response, next: NextFunction) => {
     });
 
     // send success email
-    await axios.post(`${process.env.EMAIL_SERVICE}/emails/send`, {
-      to: user.email,
+    await axios.post(`${EMAIL_SERVICE}/emails/send`, {
+      recipient: user.email,
       subject: 'Email Verified',
-      text: 'Your email has been verified successfully',
+      body: 'Your email has been verified successfully',
       source: 'verify-email',
     });
 
