@@ -30,7 +30,7 @@ if (cartSessionId) {
 
 // if cart session id is not present, create a new one
 
-if (!cartSessionId) {
+if (!cartSessionId == null) {
   cartSessionId = uuid();
   console.log('New Session ID: ', cartSessionId);
 

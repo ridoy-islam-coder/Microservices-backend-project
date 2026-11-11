@@ -9,6 +9,12 @@ const getMyCart = async (req: Request, res: Response, next: NextFunction) => {
       return res.status(200).json({ data: [] });
     }
 
+    const session = await redis.exists(`sessions:${cartSessionId}`);
+    if (!session) {
+    await redis.del(`cart:${cartSessionId}`);
+    return res.status(200).json({ data: [] });
+    }
+
     const cart = await redis.hgetall(`cart:${cartSessionId}`);
 
     return res.status(200).json({ data: cart });

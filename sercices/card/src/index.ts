@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { addToCard, getMyCard } from './controllers';
+import  './events/onKeyExpires';
 
 
 
