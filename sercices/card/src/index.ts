@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import { addToCard, getMyCard } from './controllers';
+import { addToCard, clearCart, getMyCard } from './controllers';
 import  './events/onKeyExpires';
 
 
@@ -30,6 +30,7 @@ app.use(morgan('dev'));
 
 app.post('/card/add-to-card',addToCard)
 app.get('/card/me',getMyCard)
+app.get('/card/clear',clearCart)
 
 // Health check route
 app.get('/health', (req, res) => {
