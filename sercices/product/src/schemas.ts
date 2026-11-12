@@ -11,3 +11,7 @@ export const ProductCreateDTOSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date().optional(),
 });
+
+export const ProductUpdateDTOSchema = ProductCreateDTOSchema.omit({
+  sku: true,
+}).partial();

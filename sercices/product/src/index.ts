@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
-import { createProduct, getProductById, getProducts } from './controllers';
+import { createProduct, getProductById, getProducts, updateProduct } from './controllers';
 
 
 
@@ -39,6 +39,7 @@ app.use((req, res, next) => {
 
 //api routes
 app.get('/products/:id',getProductById)
+app.put('/products/:id',updateProduct)
 app.get('/products', getProducts)
 app.post('/products',createProduct)
 
