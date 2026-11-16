@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
 import { getEmails, sendEmail } from './controller';
+import './receiver'
 
 
 
