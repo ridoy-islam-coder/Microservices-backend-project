@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { addToCard, clearCart, getMyCard } from './controllers';
 import  './events/onKeyExpires';
+import './receiver'
 
 
 
